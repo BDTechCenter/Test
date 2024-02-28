@@ -6,14 +6,45 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import test.featuresTest.configurations.Configurations;
+import test.featuresTest.featuresTest.Home.HomePageFunctionalityTestError;
+import test.featuresTest.featuresTest.Scripts.All.AllScripts;
+import test.featuresTest.featuresTest.Scripts.Input.InputScript;
 
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class NewsPageFunctionalityTest extends Configurations {
+    AllScripts allScripts = new AllScripts();
+    InputScript inputScript = new InputScript();
+
     @BeforeEach
     public void setUpTest(){
         setUP("news");
+    }
+
+    @Test
+    public void testButtonNavBarHomePage() throws InterruptedException {
+        allScripts.allNavBarButtons(driver);
+    }
+
+    @Test
+    public void testingDataOnInput(){
+        //TEST OBJECTIVE
+        //{
+        // aims to test multiple data in the same input
+        //};
+
+        //TEST VARIABLE
+        //{
+        String xpathInput = "//input[@placeholder=\"Search Here...\"]";
+        int caracteresMaxInput = 50;
+        //}
+
+        // TEST SCRIPT
+        //{
+        inputScript.inputUseTest(driver, xpathInput, caracteresMaxInput);
+        inputScript.inputUseTest(driver, xpathInput);
+        //};
     }
 
     @Test
@@ -26,7 +57,7 @@ public class NewsPageFunctionalityTest extends Configurations {
 
         //TEST VARIABLES
         //{
-        String title;
+            String title;
         //};
 
         //TEST SCRIPTS

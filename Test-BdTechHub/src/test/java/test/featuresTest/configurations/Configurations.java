@@ -13,4 +13,9 @@ public class Configurations {
         // Open site
         driver.get("http://localhost:3000/"+url);
     }
+
+    public void tearDown(WebDriver driver){
+        // Close driver
+        driver.close();
+    }
 }

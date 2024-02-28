@@ -37,10 +37,10 @@ public class HomePageFunctionalityTestError extends Configurations {
 
         //TEST SCRIPT
         //{
-        // identify 'text': 'Top news not found'
-        WebElement textError = driver.findElement(By.xpath("//h1[text()=\"Top news not found\"]"));
-        // Compare the variable 'messageError' error message with the 'text' value of the 'textError' element
-        assertEquals(messageError, textError.getText());
+            // identify 'text': 'Top news not found'
+            WebElement textError = driver.findElement(By.xpath("//h1[text()=\"Top news not found\"]"));
+            // Compare the variable 'messageError' error message with the 'text' value of the 'textError' element
+            assertEquals(messageError, textError.getText());
         //};
     }
 

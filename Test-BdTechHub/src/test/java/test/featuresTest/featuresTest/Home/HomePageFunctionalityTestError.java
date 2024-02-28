@@ -69,7 +69,7 @@ public class HomePageFunctionalityTestError extends Configurations {
 
     @AfterEach
     public void tearDown(){
-        driver.close();
+        tearDown(driver);
     }
 
 }

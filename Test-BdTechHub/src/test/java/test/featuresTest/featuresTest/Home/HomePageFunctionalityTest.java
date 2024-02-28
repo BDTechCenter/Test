@@ -65,6 +65,6 @@ public class HomePageFunctionalityTest extends Configurations {
 
     @AfterEach
     public void tearDown(){
-        driver.close();
+        tearDown(driver);
     }
 }

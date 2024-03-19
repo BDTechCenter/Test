@@ -8,6 +8,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import test.featuresTest.configurations.Configurations;
 
+import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -18,12 +19,12 @@ public class HomePageFunctionalityTestError extends Configurations {
     // and not allow interactions with the buttons
 
     @BeforeEach
-    public void setUpTest(){
-        setUP("home");
+    public void setUpTest() throws InterruptedException {
+        setUP("");
     }
 
     @Test
-    public void errorNotFindingNews(){
+    public void errorNotFindingNews() throws InterruptedException {
         //TEST OBJECTIVE
         //{
         // This test should be run without the API information to ensure the error message
@@ -32,41 +33,18 @@ public class HomePageFunctionalityTestError extends Configurations {
 
         // TEST VARIABLES
         //{
-        String messageError = "Top news not found";
+        String messageError = "Error News";
         //};
 
         //TEST SCRIPT
         //{
+            sleep(200000);
             // identify 'text': 'Top news not found'
-            WebElement textError = driver.findElement(By.xpath("//h1[text()=\"Top news not found\"]"));
+            WebElement textError = driver.findElement(By.xpath("//h1[text()=\"Error News\"]"));
             // Compare the variable 'messageError' error message with the 'text' value of the 'textError' element
             assertEquals(messageError, textError.getText());
         //};
     }
-
-    @Test
-    public void notFindingTheReadMoreButtonWhenItHasTheNotNewsError(){
-        //TEST OBJECTIVE
-        //{
-        // This test aims to verify that when the 'Not new' error occurs,
-        // it is not possible to view or interact with the 'Read more' button.
-        //};
-
-        // TEST SCRIPT
-        //{
-        try {
-            // try to identify the 'button' of the 'text':'Read More'
-            WebElement buttonReadMore = driver.findElement(By.xpath("//a/button[text()=\"Read More\"]"));
-            // try to 'click' in 'buttonReadMore'
-            buttonReadMore.click();
-            // if the 'button': 'Read More' is found the test should fail
-            fail();
-        } catch (NoSuchElementException e){
-            // if the 'button': 'Read More' is not found, the test must pass
-        }
-        //};
-    }
-
     @AfterEach
     public void tearDown(){
         tearDown(driver);

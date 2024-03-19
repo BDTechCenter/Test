@@ -1,4 +1,4 @@
-package test.featuresTest.featuresTest.Scripts.Input;
+package test.featuresTest.configurations.Scripts.Input;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

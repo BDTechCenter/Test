@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class NewsPageFunctionalityTestError extends Configurations {
 
     @BeforeEach
-    public void setUpTest(){
+    public void setUpTest() throws InterruptedException {
         setUP("news");
     }
 

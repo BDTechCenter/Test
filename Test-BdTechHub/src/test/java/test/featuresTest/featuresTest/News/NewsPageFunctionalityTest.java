@@ -6,26 +6,19 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import test.featuresTest.configurations.Configurations;
-import test.featuresTest.featuresTest.Home.HomePageFunctionalityTestError;
-import test.featuresTest.featuresTest.Scripts.All.AllScripts;
-import test.featuresTest.featuresTest.Scripts.Input.InputScript;
+import test.featuresTest.configurations.Scripts.Input.InputScript;
 
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class NewsPageFunctionalityTest extends Configurations {
-    AllScripts allScripts = new AllScripts();
     InputScript inputScript = new InputScript();
 
     @BeforeEach
-    public void setUpTest(){
+    public void setUpTest() throws InterruptedException {
         setUP("news");
     }
 
-    @Test
-    public void testButtonNavBarHomePage() throws InterruptedException {
-        allScripts.allNavBarButtons(driver);
-    }
 
     @Test
     public void testingDataOnInput(){
@@ -43,7 +36,6 @@ public class NewsPageFunctionalityTest extends Configurations {
         // TEST SCRIPT
         //{
         inputScript.inputUseTest(driver, xpathInput, caracteresMaxInput);
-        inputScript.inputUseTest(driver, xpathInput);
         //};
     }
 
@@ -63,15 +55,15 @@ public class NewsPageFunctionalityTest extends Configurations {
         //TEST SCRIPTS
         //{
             // identify the news from 'id': 'componentNewsTestNewsPage'
-            WebElement newsComponent = driver.findElement(By.id("componentNewsTestNewsPage"));
+            WebElement newsComponent = driver.findElement(By.id("componentNewsTest"));
             // identify the news title: 'newsComponent'
-            WebElement textNewsComponent = driver.findElement(By.xpath("//a[@id=\"componentNewsTestNewsPage\"]/div/h1"));
+            WebElement textNewsComponent = driver.findElement(By.xpath("//*[@id=\"componentNewsTest\"]/div/h1"));
             title = textNewsComponent.getText();
             // click on the news: 'componentNewsTestNewsPage'
             newsComponent.click();
             sleep(2000);
             // identify the title of the news page the test was directed to
-            WebElement titleNewsPage = driver.findElement(By.xpath("//h1"));
+            WebElement titleNewsPage = driver.findElement(By.id("titleAdvanced"));
             // compare the news title: 'title' with the news page title: 'titleNewsPage'
             assertEquals(title, titleNewsPage.getText());
         //};

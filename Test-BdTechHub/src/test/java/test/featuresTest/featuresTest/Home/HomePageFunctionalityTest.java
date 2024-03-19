@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import test.featuresTest.configurations.Configurations;
 
+import javax.swing.*;
+
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -12,10 +14,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class HomePageFunctionalityTest extends Configurations {
 
     @BeforeEach
-    public void setUpTest(){
-        setUP("home");
+    public void setUpTest() throws InterruptedException {
+        setUP("");
     }
-
 
     @Test
     public void checkingTheExistenceOfNewsOnTheHomePage(){
@@ -35,31 +36,27 @@ public class HomePageFunctionalityTest extends Configurations {
     }
 
     @Test
-    public void clickInReadMoreButton() throws InterruptedException {
+    public void identifyClickAndMakeSureTheTitlesMatch() throws InterruptedException {
         //TEST OBJECTIVE
         //{
-        // check if there is a 'button' with 'text':'Read more'
-        // and if there is a click and check if you have accessed the news page
-        //};
-
-        // TEST VARIABLES
-        //{
-            String textBanner = "Follow the main news of the moment...";
+        // The objective is to check whether the previous news corresponds to the
+        // advanced news.
         //};
 
         // TEST SCRIPT
         //{
-            // check 'button' with 'text':'Read MOre'
-            WebElement buttonReadMOre = driver.findElement(By.xpath("//a/button[text()=\"Read More\"]"));
-            // scroll the page to the element
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'end', behavior: 'smooth'});", buttonReadMOre);
-            // click on the 'button': 'buttonReadMOre'
-            sleep(2000);
-            buttonReadMOre.click();
-            // check if you went to the news page
-            WebElement textBannerNewsPage = driver.findElement(By.xpath("//h1/p"));
-            assertEquals(textBanner, textBannerNewsPage.getText());
-
+        // check existence of 'id' component: 'newsComponentHomeTest'
+        WebElement newsComponent = driver.findElement(By.id("componentNewsTest"));
+        // store news title preveaw
+        WebElement titleNewsPreveaw = driver.findElement(By.xpath("//*[@id=\"componentNewsTest\"]/div/h1"));
+        String titleNewsPrwveawText = titleNewsPreveaw.getText();
+        // click on the 'id' component: 'newsComponentHomeTest'
+        newsComponent.click();
+        sleep(5000);
+        // store news title advanced
+        WebElement titleNewsAdvanced = driver.findElement(By.id("titleAdvanced"));
+        // Compare the variable 'titleNewsPreveaw' with the variable 'titleNewsAdvanced'
+        assertEquals(titleNewsPrwveawText, titleNewsAdvanced.getText());
         //};
     }
 
